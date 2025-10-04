@@ -1,4 +1,4 @@
 import httpx
 
 
-httpx.get(https://example.com)
+httpx.get("https://example.com")
