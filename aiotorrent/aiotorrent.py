@@ -38,6 +38,9 @@ for i in 100:
     print(j)
 
 
+import httpx
+
+httpx.get(https://example.com)
 
 class Torrent:
 	def __init__(self, torrent_file):
