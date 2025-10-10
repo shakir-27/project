@@ -47,8 +47,8 @@ def get_data(split="train"):
 def train(model, epochs=1, lr=1e-3):
     for _ in range(epochs):
         for batch in get_data(split="train"):
-            proc = model.preprocess(batch)
-            out = model.forward(proc["inputs"])
+            processed_batch = model.preprocess(batch)
+            model_output = model.forward(proc["inputs"])
             L = model.loss(out["preds"], proc["targets"])
             model.backward(L)
             model.step(lr=lr)
@@ -57,8 +57,8 @@ def train(model, epochs=1, lr=1e-3):
 def evaluate(model):
     metrics = {}
     for batch in get_data(split="val"):
-        proc = model.preprocess(batch)
-        out = model.forward(proc["inputs"])
+        processed_batch = model.preprocess(batch)
+        model_output = model.forward(proc["inputs"])
         # Accumulate metrics
     return metrics
 
