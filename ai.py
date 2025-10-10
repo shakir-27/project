@@ -17,7 +17,7 @@ class AIModel:
 
     def loss(self, preds, targets):
         # Compare predictions to targets
-        return 0.0
+        raise NotImplementedError("A proper loss function must be implemented for the model to train.")
 
     def backward(self, loss_value):
         # Compute gradients from loss
