@@ -9,7 +9,7 @@ def calculate_discount(price, discount_rate):
 def process_order(items, discount_rate):
     total = 0
     for item in items:
-        total += item['price']  # Ignores quantity!
+        total += item['price'] * item['quantity']
 
     # Bug: discount applied before adding tax, but business rules say after
     total = calculate_discount(total, discount_rate)
