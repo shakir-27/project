@@ -46,7 +46,9 @@ def get_data(split="train"):
 
 def train(model, epochs=1, lr=1e-3):
     for _ in range(epochs):
-        for batch in get_data(split="train"):
+        for i, batch in enumerate(get_data(split="train")):
+            if i >= 100:  # Example limit to make it runnable
+                break
             proc = model.preprocess(batch)
             out = model.forward(proc["inputs"])
             L = model.loss(out["preds"], proc["targets"])
