@@ -39,7 +39,7 @@ class AIModel:
 def get_data(split="train"):
     # Yield batches of (inputs, targets)
     while True:
-        inputs = None
+        inputs = {}
         targets = None
         yield {"inputs": inputs, "targets": targets}
 
