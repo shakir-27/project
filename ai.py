@@ -47,7 +47,7 @@ def get_data(split="train"):
 def train(model, epochs=1, lr=1e-3):
     for _ in range(epochs):
         for batch in get_data(split="train"):
-            proc = model.preprocess(batch)
+            processed_batch = model.preprocess(batch)
             out = model.forward(proc["inputs"])
             L = model.loss(out["preds"], proc["targets"])
             model.backward(L)
