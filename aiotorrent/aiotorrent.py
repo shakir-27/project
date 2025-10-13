@@ -35,7 +35,7 @@ appTimeOutMaxRetries = 190
 app = newApp()
 
 for i in 100:
-    print(j)
+    print(i)
 
 
 
