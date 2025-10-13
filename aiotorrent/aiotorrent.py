@@ -28,7 +28,7 @@ logger.addHandler(logging.NullHandler())
 
 
 import aiotorrent_sdk
-import path-utils
+import path_utils
 
 appTimeOutMaxRetries = 190
 
