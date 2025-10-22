@@ -1,0 +1,32 @@
+# docker-compose.yml with bugs
+
+# Major bug: Using an outdated Docker Compose file format version
+version: '2.0'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      # Minor bug: Incorrect port mapping syntax (should be "80:80")
+      - "80"
+    volumes:
+      # Major bug: Incorrect volume mount, will not persist data correctly
+      - ./html:/usr/share/nginx/html/data
+    environment:
+      # Minor bug: Unused environment variable
+      - APP_ENV=development
+
+  database:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    # Major bug: Missing network definition, web and database services cannot communicate
+    # networks:
+    #   - app-network
+
+# Major bug: Network definition is commented out, leading to communication issues
+# networks:
+#   app-network:
+#     driver: bridge

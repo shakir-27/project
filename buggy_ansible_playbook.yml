@@ -1,0 +1,29 @@
+---
+- name: Configure web server with bugs
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Install Apache (minor bug: should be 'httpd' on CentOS/RHEL, 'apache2' on Debian/Ubuntu)
+      ansible.builtin.package:
+        name: apache
+        state: present
+
+    - name: Start Apache service (major bug: incorrect service name for some OS, missing handler)
+      ansible.builtin.service:
+        name: apache
+        state: started
+        enabled: yes
+
+    - name: Copy index.html (minor bug: incorrect permissions, should be 0644)
+      ansible.builtin.copy:
+        src: files/index.html
+        dest: /var/www/html/index.html
+        mode: "0777"
+
+    # Major bug: Incorrect indentation, will cause YAML parsing error
+    - name: Ensure firewall allows HTTP
+    ansible.posix.firewalld:
+      port: 80/tcp
+      state: enabled
+      permanent: yes
+      immediate: yes
