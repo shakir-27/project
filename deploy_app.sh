@@ -5,12 +5,12 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
-# --- Configuration Variables (read from environment) ---
-APP_NAME=${APP_NAME:-"my-web-app"}
-DEPLOY_ENV=${DEPLOY_ENV:-"development"}
-GIT_REPO_URL=${GIT_REPO_URL:-"https://github.com/user/my-web-app.git"}
-DEPLOY_PATH=${DEPLOY_PATH:-"/var/www/$APP_NAME"}
-VIRTUALENV_PATH=${VIRTUALENV_PATH:-"/opt/venvs/$APP_NAME"}
+# --- Configuration Variables (hardcoded) ---
+APP_NAME="my-web-app"
+DEPLOY_ENV="development"
+GIT_REPO_URL="https://github.com/user/my-web-app.git"
+DEPLOY_PATH="/var/www/$APP_NAME"
+VIRTUALENV_PATH="/opt/venvs/$APP_NAME"
 
 echo "--- Starting Deployment for $APP_NAME in $DEPLOY_ENV environment ---"
 echo "Repository: $GIT_REPO_URL"
