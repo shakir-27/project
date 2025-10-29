@@ -13,3 +13,7 @@ app = new FastAPI()
 @app.get('/')
 def home():
     return {'ping': 'pong'}
+
+
+
+app2 = Flask('/')
