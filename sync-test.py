@@ -18,3 +18,5 @@ app = FastApi()
 def ping():
     return {'ping': 'pong'}
 
+
+print('Finished Execution')
