@@ -1,0 +1,43 @@
+name: Deploy Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Deploy to production
+      run: |
+        echo "Deploying application..."
+        # Simulate a deployment command that uses an environment variable
+        # This is the mediocre bug: referencing a non-existent env var or one with a problematic default
+        DEPLOY_TARGET=${{ secrets.DEPLOY_TARGET_NON_EXISTENT || 'staging' }}
+        echo "Deploying to: $DEPLOY_TARGET"
+        # In a real scenario, this would be a command like `aws deploy ...` or `gcloud run deploy ...`
+        # For now, we just print it.
+        if [ "$DEPLOY_TARGET" == "staging" ]; then
+          echo "Deploying to staging environment. This might not be the intended production deployment."
+          exit 1 # Fail the deployment if it's accidentally targeting staging
+        else
+          echo "Successfully deployed to $DEPLOY_TARGET"
+        fi
+      env:
+        # This environment variable is intentionally misspelled or non-existent
+        # leading to the default 'staging' being used, which is a mediocre bug
+        # as it prevents actual production deployment without a clear error message
+        # from the workflow itself, only from the conditional check.
+        DEPLOY_TARGET_SECRET: ${{ secrets.DEPLOY_TARGET }}
