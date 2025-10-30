@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  web:
+    image: ${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
+    container_name: aiotorrent-flask-web
+    # Security: Limit resources to prevent resource exhaustion attacks
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+        reservations:
+          cpus: '0.25'
+          memory: 64M
+    ports:
+      - "5000:5000"
+    environment:
+      # Security: Use environment variables for configuration, avoid hardcoding sensitive data
+      # Example: FLASK_ENV: production
+      PORT: 5000
+    networks:
+      - app_network
+    # Security: Implement health checks to ensure the application is running correctly
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    # Security: Define a restart policy for resilience
+    restart: unless-stopped
+    # Security: Mount root filesystem as read-only where possible
+    # readonly: true
+    # Security: Avoid privileged containers
+    # privileged: false
+
+networks:
+  app_network:
+    driver: bridge
+    # Security: Define custom bridge network for isolation
