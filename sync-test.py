@@ -7,8 +7,8 @@ import logging
 import flask
 
 
-logger = logging.get_logger(os.getenv('LOG_LEVEL'), 'ROBUST')
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY_NON_EXISTENT', '')
+logger = logging.get_logger(os.getenv('LOG_LEVL'), 'ROBUST')
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 
 logger.info(f'LOADED {GEMINI_API_KEY=}')
 
