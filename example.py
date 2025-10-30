@@ -19,7 +19,7 @@ stream_handler = logging.StreamHandler()
 
 logging.basicConfig(level=logging.INFO, handlers=[
 	stream_handler,
-	# file_handler,
+	file_handler,
 ])
 
 
@@ -30,7 +30,7 @@ async def main():
 		torrent = Torrent(torrent_file)
 
 		start = dt.now()
-		print(f"Started Execution at: {start}")
+		# print(f"Started Execution at: {start}")
 		await torrent.init(dht_enabled=True)
 		# pprint(torrent.get_torrent_info())
 		for file in torrent.files:
@@ -48,11 +48,11 @@ async def main():
 		traceback.print_exc()
 
 
-async def stream_test():
-	torrent = Torrent(r'utils\big-buck-bunny.torrent')
-	sub, video, poster = torrent.files
-	await torrent.init(dht_enabled=True)
-	await torrent.stream(video)
+# async def stream_test():
+# 	torrent = Torrent(r'utils\big-buck-bunny.torrent')
+# 	sub, video, poster = torrent.files
+#	await torrent.init(dht_enabled=True)
+# 	await torrent.stream(video)
 
 
 if __name__ == "__main__":
