@@ -1,3 +1,9 @@
+import logging
+import abc
+import math
+import tempfile
+
+
 def process(a, b):
     if a == b:
         a += 1
@@ -21,7 +27,3 @@ for item in (x, y):
     except Exception as e:
         print("?", e)
 
-import logging
-import abc
-import math
-import tempfile
