@@ -1,0 +1,69 @@
+
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE = "aiotorrent-fastapi"
+        DOCKER_REGISTRY = "your-docker-registry"
+        K8S_NAMESPACE = "aiotorrent"
+    }
+
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    dir('fastapi_app') {
+                        sh "docker build -t ${DOCKER_IMAGE}:${env.BUILD_ID} ."
+                    }
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                script {
+                    dir('fastapi_app') {
+                        // In a real application, you would run actual tests here.
+                        // For now, a placeholder.
+                        sh "echo 'Running tests...'"
+                        sh "python -m pytest || true" // Placeholder for actual tests
+                    }
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    dir('fastapi_app') {
+                        sh "docker tag ${DOCKER_IMAGE}:${env.BUILD_ID} ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${env.BUILD_ID}"
+                        withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                            sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin ${DOCKER_REGISTRY}"
+                            sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${env.BUILD_ID}"
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    dir('fastapi_app/k8s') {
+                        sh "kubectl config use-context your-kubernetes-context"
+                        sh "kubectl create namespace ${K8S_NAMESPACE} --dry-run=client -o yaml | kubectl apply -f - || true"
+                        sh "envsubst < deployment.yaml | kubectl apply -f - -n ${K8S_NAMESPACE}"
+                        sh "envsubst < service.yaml | kubectl apply -f - -n ${K8S_NAMESPACE}"
+                        sh "envsubst < persistentvolumeclaim.yaml | kubectl apply -f - -n ${K8S_NAMESPACE}"
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}

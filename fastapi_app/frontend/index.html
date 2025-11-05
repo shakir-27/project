@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AioTorrent Web UI</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AioTorrent Web UI</h1>
+
+        <div class="upload-section">
+            <h2>Upload Torrent</h2>
+            <form id="uploadForm">
+                <input type="file" id="torrentFile" name="file" accept=".torrent" required>
+                <button type="submit">Upload</button>
+            </form>
+            <p id="uploadMessage"></p>
+        </div>
+
+        <div class="torrents-section">
+            <h2>Active Torrents</h2>
+            <table id="torrentsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Progress</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Torrent rows will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="deserialization-section">
+            <h2>Process Data (Vulnerable Endpoint)</h2>
+            <form id="processDataForm">
+                <label for="dataPayload">Base64 Encoded Pickled Data:</label>
+                <input type="text" id="dataPayload" name="data" placeholder="e.g., gASVHgAAAAAAAACMBGNvbnNvbGUKc3lzdGVtCg__" required>
+                <button type="submit">Process</button>
+            </form>
+            <p id="processDataMessage"></p>
+        </div>
+
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

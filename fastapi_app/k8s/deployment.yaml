@@ -1,0 +1,39 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aiotorrent-fastapi-deployment
+  labels:
+    app: aiotorrent-fastapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aiotorrent-fastapi
+  template:
+    metadata:
+      labels:
+        app: aiotorrent-fastapi
+    spec:
+      containers:
+      - name: aiotorrent-fastapi
+        image: ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${BUILD_ID}
+        ports:
+        - containerPort: 8000
+        env:
+        - name: TORRENT_STORAGE_PATH
+          value: "/app/torrents"
+        - name: DATABASE_URL
+          value: "/app/torrents.db"
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aiotorrent-fastapi-secret
+              key: secret-key
+        volumeMounts:
+        - name: torrent-data
+          mountPath: /app/torrents
+      volumes:
+      - name: torrent-data
+        persistentVolumeClaim:
+          claimName: aiotorrent-fastapi-pvc
