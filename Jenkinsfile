@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_REGISTRY = "your-docker-registry.com"
         IMAGE_NAME      = "aiotorrent-flask-app"
-        IMAGE_TAG       = "latest"
+IMAGE_TAG       = "${env.GIT_COMMIT.substring(0, 7)}"
         # Security: Use Jenkins credentials for sensitive information
         # DOCKER_CREDENTIAL_ID = "docker-hub-credentials"
         # SSH_CREDENTIAL_ID    = "ansible-ssh-key"
