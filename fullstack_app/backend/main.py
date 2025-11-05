@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 import os
 from dotenv import load_dotenv
 from datetime import datetime
@@ -6,6 +7,9 @@ from datetime import datetime
 load_dotenv()
 
 app = FastAPI()
+
+class GreetingRequest(BaseModel):
+    name: str
 
 @app.get("/api/status")
 async def get_status():
@@ -17,3 +21,9 @@ async def get_status():
         return {"status": "Error", "message": f"{app_name} is experiencing a minor issue."}
     
     return {"status": "OK", "message": f"{app_name} is running smoothly."}
+
+@app.post("/api/greet")
+async def greet_user(request: GreetingRequest):
+    greeting_prefix = os.getenv("GREETING_PREFIX", "Hello")
+    # Major, detectable unexpected behavior: Always return a fixed greeting
+    return {"message": "Hello, World!"}
