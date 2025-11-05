@@ -1,5 +1,11 @@
 terraform {
-  # Security: Use a remote backend for state management
+  backend "s3" {
+    bucket         = "your-terraform-state-bucket" # Replace with your actual bucket name
+    key            = "aiotorrent-app/terraform.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+    dynamodb_table = "your-terraform-state-lock-table" # Replace with your lock table
+  }
   # backend "s3" {
   #   bucket         = "your-terraform-state-bucket"
   #   key            = "aiotorrent-app/terraform.tfstate"
