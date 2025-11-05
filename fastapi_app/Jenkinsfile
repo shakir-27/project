@@ -4,7 +4,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "aiotorrent-fastapi"
-        DOCKER_REGISTRY = "your-docker-registry"
+DOCKER_REGISTRY = env.DOCKER_REGISTRY_URL
         K8S_NAMESPACE = "aiotorrent"
     }
 
