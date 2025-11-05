@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
+app.use(express.json()); // For parsing application/json
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
@@ -16,6 +17,18 @@ app.get('/', (req, res) => {
     }
 
     res.send(greeting);
+});
+
+app.post('/greet', (req, res) => {
+    const { name } = req.body;
+    const greetingPrefix = process.env.GREETING_PREFIX || 'Hello';
+
+    if (!name) {
+        return res.status(400).send('Name is required.');
+    }
+
+    // Major, detectable unexpected behavior: Always return generic greeting
+    res.send(`${greetingPrefix}, Guest!`);
 });
 
 app.listen(port, () => {
