@@ -91,12 +91,22 @@ async def create_item(item: Item):
 
     db.append(item)
 
-    return {"message": f"Item '{item.name}' added.", "current_items": len(db)}
+        return {"message": f"Item '{item.name}' added.", "current_items": len(db)}
 
+    
 
+    @app.get("/items")
 
-@app.get("/items")
+    async def read_items():
 
-async def read_items():
+        max_items = int(os.getenv("MAX_ITEMS", "10"))
 
-    return {"items": db, "count": len(db)}
+        if max_items % 2 != 0:
+
+            # Critical and hard-to-spot bug: Return reversed list if MAX_ITEMS is odd
+
+            return {"items": db[::-1], "count": len(db)}
+
+        return {"items": db, "count": len(db)}
+
+    
