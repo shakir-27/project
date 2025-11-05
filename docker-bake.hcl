@@ -7,7 +7,9 @@ variable "IMAGE_NAME" {
 }
 
 variable "IMAGE_TAG" {
-  default = "latest"
+variable "IMAGE_TAG" {
+  # No default, force tag to be provided
+}
 }
 
 target "default" {
