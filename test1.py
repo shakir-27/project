@@ -40,3 +40,9 @@ def process(ctx):
 def conclude(ctx):
     return ctx["notes"][-1] if ctx["notes"] else "unclear"
 
+
+
+
+
+if __name__ == "__main__":
+    print("hello world")
