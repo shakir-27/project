@@ -11,7 +11,10 @@ class Settings(BaseSettings):
     API_VERSION: str = "v1"
     SERVICE_NAME: str = "FastAPI Service"
     DEBUG_MODE: bool = False
-    DATABASE_URL: Optional[str] = None
+
+    # New environment variables
+    LOG_LEVEL: str = "INFO"
+    METRICS_ENABLED: bool = False
 
     model_config = SettingsConfigDict(env_file='.env', extra='ignore')
 
