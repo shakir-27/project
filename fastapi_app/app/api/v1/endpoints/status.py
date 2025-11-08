@@ -12,8 +12,6 @@ class StatusResponse(BaseModel):
     current_time: str
     my_env_var1: str
     my_env_var2: str
-    new_env_var1: str # This was NEW_ENV_VAR1 in the previous iteration, now it's part of the settings object
-    new_env_var2: str # This was NEW_ENV_VAR2 in the previous iteration, now it's part of the settings object
 
 @router.get("/status", response_model=StatusResponse, summary="Get service status and configuration")
 async def get_status():
@@ -27,7 +25,5 @@ async def get_status():
         debug_mode=settings.DEBUG_MODE,
         current_time=get_current_time(),
         my_env_var1=settings.MY_ENV_VAR1,
-        my_env_var2=settings.MY_ENV_VAR2,
-        new_env_var1=settings.NEW_ENV_VAR1, # Accessing the new env var from settings
-        new_env_var2=settings.NEW_ENV_VAR2  # Accessing the new env var from settings
+        my_env_var2=settings.MY_ENV_VAR2
     )

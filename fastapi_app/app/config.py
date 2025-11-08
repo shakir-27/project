@@ -7,10 +7,6 @@ class Settings(BaseSettings):
     MY_ENV_VAR1: str = "Not Set"
     MY_ENV_VAR2: str = "Not Set"
 
-    # New environment variables from previous iteration
-    NEW_ENV_VAR1: str = "New Var 1 Not Set"
-    NEW_ENV_VAR2: str = "New Var 2 Not Set"
-
     # New environment variables for this refactor
     API_VERSION: str = "v1"
     SERVICE_NAME: str = "FastAPI Service"
