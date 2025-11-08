@@ -10,9 +10,11 @@ class Settings(BaseSettings):
     # New environment variables for this refactor
     API_VERSION: str = "v1"
     SERVICE_NAME: str = "FastAPI Service"
-    DEBUG_MODE: bool = False
 
     # New environment variables
+    ENVIRONMENT: str = "development"
+    RATE_LIMIT_PER_MINUTE: int = 60
+
     LOG_LEVEL: str = "INFO"
     METRICS_ENABLED: bool = False
 

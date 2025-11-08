@@ -7,7 +7,6 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title=settings.SERVICE_NAME,
         version=settings.API_VERSION,
-        debug=settings.DEBUG_MODE,
         description="A professionally refactored FastAPI application."
     )
 
