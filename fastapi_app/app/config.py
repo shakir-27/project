@@ -7,16 +7,14 @@ class Settings(BaseSettings):
     MY_ENV_VAR1: str = "Not Set"
     MY_ENV_VAR2: str = "Not Set"
 
-    # New environment variables for this refactor
-    API_VERSION: str = "v1"
-    SERVICE_NAME: str = "FastAPI Service"
-
     # New environment variables
+    SERVICE_NAME: str = "FastAPI Service"
     ENVIRONMENT: str = "development"
     RATE_LIMIT_PER_MINUTE: int = 60
 
-    LOG_LEVEL: str = "INFO"
-    METRICS_ENABLED: bool = False
+    # New environment variables for application host and port
+    APP_HOST: str = "0.0.0.0"
+    APP_PORT: int = 8000
 
     model_config = SettingsConfigDict(env_file='.env', extra='ignore')
 

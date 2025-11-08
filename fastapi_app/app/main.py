@@ -1,12 +1,13 @@
 from fastapi import FastAPI
-from app.api.v1.api import api_router
+from app.api.v1.router import api_router
 from app.config import settings
+from app.core.logging import configure_logging
 import os
 
 def create_app() -> FastAPI:
+    configure_logging()
     app = FastAPI(
         title=settings.SERVICE_NAME,
-        version=settings.API_VERSION,
         description="A professionally refactored FastAPI application."
     )
 
@@ -27,4 +28,4 @@ app = create_app()
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host=settings.APP_HOST, port=settings.APP_PORT, reload=True)
