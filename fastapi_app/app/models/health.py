@@ -5,4 +5,3 @@ class HealthStatus(BaseModel):
     host: str
     port: int
     environment: str
-    service_name: str

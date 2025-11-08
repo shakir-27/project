@@ -6,6 +6,5 @@ class HealthService:
         return HealthStatus(
             host=settings.APP_HOST,
             port=settings.APP_PORT,
-            environment=settings.ENVIRONMENT,
-            service_name=settings.SERVICE_NAME
+            environment=settings.ENVIRONMENT
         )
