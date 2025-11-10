@@ -1,5 +1,5 @@
 def calculateSum ( a , b ):
-    result  =  a  +  b
+    sum_value  =  a  +  b
     return result
 if __name__ == "__main__":
     myVariable = calculateSum(5, 3)
