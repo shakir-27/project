@@ -1,6 +1,6 @@
 ---
 - name: Install Nginx web server
-  hosts: all
+  hosts: your_target_group
   become: yes
   tasks:
     - name: Update apt cache (Ubuntu/Debian)
