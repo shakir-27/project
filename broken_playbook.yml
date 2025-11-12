@@ -9,6 +9,6 @@
       when: ansible_os_family == "Debian"
 
     - name: Install Nginx
-      ansible.builtin.package:
+      ansible.builtin.apt:
         name: nginx
         state: present
