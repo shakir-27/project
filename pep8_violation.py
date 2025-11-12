@@ -1,4 +1,4 @@
-def calculateSum ( a , b ):
+def calculateSum ( first_number , second_number ):
     result  =  a  +  b
     return result
 if __name__ == "__main__":
