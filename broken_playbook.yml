@@ -11,4 +11,4 @@
     - name: Install Nginx
       ansible.builtin.package:
         name: nginx
-        stat: present # Intentional mistake: should be 'state'
+        state: present
