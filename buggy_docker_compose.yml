@@ -21,7 +21,7 @@ services:
     environment:
       POSTGRES_DB: mydatabase
       POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     # Major bug: Missing network definition, web and database services cannot communicate
     # networks:
     #   - app-network
