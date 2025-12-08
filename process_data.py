@@ -29,9 +29,7 @@ def process_data():
     logging.debug(f"API Key: {'*' * len(api_key) if api_key else '(empty)'}") # Log API key only in debug
 
     # 1. Ensure output directory exists
-    if not os.path.exists(output_dir):
-        logging.info(f"Creating output directory: {output_dir}")
-        os.makedirs(output_dir)
+    os.makedirs(output_dir, exist_ok=True)
 
     # 2. Simulate fetching data
     logging.info(f"Fetching data from {data_source_url}...")
