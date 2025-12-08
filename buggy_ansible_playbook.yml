@@ -22,8 +22,8 @@
 
     # Major bug: Incorrect indentation, will cause YAML parsing error
     - name: Ensure firewall allows HTTP
-    ansible.posix.firewalld:
-      port: 80/tcp
-      state: enabled
-      permanent: yes
-      immediate: yes
+      ansible.posix.firewalld:
+        port: 80/tcp
+        state: enabled
+        permanent: yes
+        immediate: yes
