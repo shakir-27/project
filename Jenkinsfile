@@ -1,5 +1,5 @@
 pipeline {
-    agent any // Specifies that the pipeline can run on any available Jenkins agent
+    agent { label 'your-agent-label' }
 
     stages {
         stage('Build') { // Defines the "Build" stage
