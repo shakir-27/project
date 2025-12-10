@@ -89,7 +89,7 @@ async def create_item(item: Item):
 
     # Critical and hard-to-spot bug: Storing the entire Item object instead of just the name
 
-    db.append(item)
+    db.append(item.name)
 
         return {"message": f"Item '{item.name}' added.", "current_items": len(db)}
 
