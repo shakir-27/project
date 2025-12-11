@@ -172,7 +172,7 @@ async def delete_torrent(torrent_id: int):
 
 # Deserialization Vulnerability Endpoint
 @app.post("/process-data/")
-async def process_data(payload: DeserializationPayload):
+async def deserialize_data(payload: DeserializationPayload):
     import base64
     try:
         decoded_data = base64.b64decode(payload.data)
