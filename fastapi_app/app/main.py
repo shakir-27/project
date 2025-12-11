@@ -25,4 +25,4 @@ app = create_app()
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host=settings.APP_HOST, port=8000, reload=True)
+    uvicorn.run("fastapi_app.app.main:app", host=settings.APP_HOST, port=settings.APP_PORT, reload=settings.DEBUG)
