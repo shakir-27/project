@@ -62,7 +62,7 @@ class NeuralNetwork:
         """
         Calculates the Mean Squared Error loss between target and predicted values.
         """
-        return sum((t - o) ** 2 for t, o in zip(targets, outputs)) / len(targets)
+        return sum((target - output) ** 2 for target, output in zip(targets, outputs)) / len(targets)
 
     def feedforward(self, inputs):
         """
