@@ -148,10 +148,9 @@ class NeuralNetwork:
             total_loss = 0.0
             # Train on each example in the dataset
             for inputs, targets in training_data:
-                self.backpropagate(inputs, targets)
-                # Recalculate output to measure loss after update
                 outputs = self.feedforward(inputs)
                 total_loss += NeuralNetwork.mean_squared_error(targets, outputs)
+                self.backpropagate(inputs, targets)
             
             # Periodically print the average loss to monitor training progress
             if epoch % 1000 == 0 or epoch == 1:
