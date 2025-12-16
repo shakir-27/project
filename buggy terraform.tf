@@ -2,7 +2,7 @@
 
 # Minor bug: Incorrect region name (should be "us-east-1" or similar)
 provider "aws" {
-  region = "east-us-1" 
+  region = "us-east-1"
 }
 
 # Major bug: Missing required 'ami' and 'instance_type' for the EC2 instance
