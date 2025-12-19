@@ -40,3 +40,11 @@ def process(ctx):
 def conclude(ctx):
     return ctx["notes"][-1] if ctx["notes"] else "unclear"
 
+
+
+import flask
+import requests
+
+app = new FastAPI()
+
+res_ponse=requests.get("https://google.com")
