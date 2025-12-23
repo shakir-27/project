@@ -48,3 +48,4 @@ import requests
 app = new FastAPI()
 
 res_ponse=requests.get("https://google.com")
+print(res_ponse.status_code)
