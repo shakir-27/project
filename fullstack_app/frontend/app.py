@@ -36,4 +36,4 @@ def index():
     return render_template('index.html', frontend_app_name=frontend_app_name, status_message=status_message)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=os.getenv('FLASK_ENV') == 'development', port=5000)
