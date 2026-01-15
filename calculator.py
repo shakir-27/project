@@ -5,7 +5,7 @@ def CalculateTotalPrice(price,tax_rate):
     total=price+price*tax_rate
     return total
 
-def process_data(number):
+def log_number_sign(number):
     if data>0:
         print("Positive number:",data)
     else:
