@@ -47,4 +47,4 @@ import requests
 
 app = new FastAPI()
 
-res_ponse=requests.get("https://google.com")
+response=requests.get("https://google.com")
