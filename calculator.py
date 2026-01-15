@@ -30,7 +30,7 @@ def main():
     tax1=price1*0.1
     price2=200
     tax2=price2*0.1
-    total1=CalculateTotalPrice(price1,0.1)
+ total1 = calculate_total_price(price1, 0.1)
     total2=CalculateTotalPrice(price2,0.1)
     
     account=UserAccount("John Doe",1000)
