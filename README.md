@@ -5,6 +5,11 @@ Aiotorrent is an asynchronous, ultra-lightweight torrent library written in pure
 <br>
 A comprehensive list of features supported by aiotorrent as of now are:
 
+
+
+
+
+
   - Complete asyncio support
   - Connecting to various types of torrent trackers (HTTP & UDP)
   - Specifying an appropriate piece download strategy (default and sequential downloading)
