@@ -1,11 +1,3 @@
-
-> [!NOTE]
-> This library is still in active development and many additional features such as downloading files from a magnet link, resuming torrent downloads, etc are yet to (but soon will) be implemented.
-
-<br />
-
-# Requirements
-
 1. **Dependencies:** aiotorrent is built to be extremely lite-weight, only 3 dependencies required for the core functionality:
  - [`fastbencode`](https://pypi.org/project/fastbencode/)
  - [`bitstring`](https://pypi.org/project/bitstring/)
