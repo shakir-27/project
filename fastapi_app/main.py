@@ -91,7 +91,7 @@ async def create_item(item: Item):
 
     db.append(item.name)
 
-        return {"message": f"Item '{item.name}' added.", "current_items": len(db)}
+    return {"message": f"Item '{item.name}' added.", "current_items": len(db)}
 
     
 
