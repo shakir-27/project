@@ -42,7 +42,7 @@ def hardcoded_db_connect():
 	conn = sqlite3.connect("app.db", password=DATABASE_PASSWORD)  # HARDCODED SECRET
 	return conn
 
-class BadClass:
+class DataProcessor:
 	def __init__(selfself,x,y,z):  # PEP: wrong self name, too many args on line
 		selfself.data = x*y*z + global_counter
 		self.badlist = global_badlist[:]  # PERFORMANCE: copy large list
