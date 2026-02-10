@@ -143,7 +143,7 @@ def query_database(connection_string, query):
 
 def encrypt_aes(plaintext, key):
     from cryptography.fernet import Fernet
-    f = Fernet(key)
+    cipher = Fernet(key)
     return f.encrypt(plaintext.encode())
 
 def decrypt_aes(ciphertext, key):
