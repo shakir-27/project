@@ -35,7 +35,7 @@ def exec_malicious_code():
 	exec("import os; os.system(command)")  # INJECTION vuln
 
 def pickle_deserialize_attack(data):
-	return pickle.loads(data)  # INSECURITY: arbitrary code exec possible
+	return json.loads(data)
 
 def hardcoded_db_connect():
 	import sqlite3
