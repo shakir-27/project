@@ -28,7 +28,7 @@ def tuple_unpack(tup):
 def float_conversion(val):
     return float(val)
 
-def str_split_no_args(s):
+def split_string_by_whitespace(text):
     return s.split()
 
 def dict_get_nested(d, key1, key2):
