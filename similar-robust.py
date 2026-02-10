@@ -17,7 +17,7 @@ def list_index_access(lst, idx):
 def list_pop(lst, idx):
     return lst.pop(idx)
 
-def set_get_element(s, elem):
+def set_get_element(input_set, element):
     s.remove(elem)
     return elem
 
