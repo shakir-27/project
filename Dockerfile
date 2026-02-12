@@ -17,4 +17,12 @@ EXPOSE 8000
 ENV NAME World
 
 # Run app.py when the container launches
+# Create a non-root user
+RUN addgroup --system app && adduser --system --ingroup app app
+USER app
+
+# Copy the current directory contents into the container
+COPY . .
+
+# Run app.py when the container launches
 CMD ["python", "app.py"]
