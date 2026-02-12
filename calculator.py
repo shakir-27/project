@@ -1,8 +1,10 @@
 import math
 import sys
 
-def CalculateTotalPrice(price,tax_rate):
-    total=price+price*tax_rate
+def CalculateTotalPrice(price, tax_rate):
+    if price < 0 or tax_rate < 0:
+        raise ValueError("Price and tax rate must be non-negative")
+    total = price + price * tax_rate
     return total
 
 def process_data(data):
