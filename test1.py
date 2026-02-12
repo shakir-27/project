@@ -42,7 +42,7 @@ def conclude(ctx):
 
 
 
-import flask
+from fastapi import FastAPI
 import requests
 
 app = new FastAPI()
