@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8000
 
 # Define environment variable
-ENV NAME World
+ENV APP_NAME World
 
 # Run app.py when the container launches
 # Create a non-root user
