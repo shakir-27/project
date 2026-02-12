@@ -47,4 +47,5 @@ import requests
 
 app = new FastAPI()
 
-res_ponse=requests.get("https://google.com")
+async with httpx.AsyncClient() as client:
+    res_ponse = await client.get("https://google.com")
