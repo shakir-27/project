@@ -45,6 +45,8 @@ def conclude(ctx):
 import flask
 import requests
 
-app = new FastAPI()
+from fastapi import FastAPI
+
+app = FastAPI()
 
 res_ponse=requests.get("https://google.com")
