@@ -10,7 +10,7 @@ def process_data(data):
         print("Positive number:",data)
     else:
         print("Non-positive:",data)
-    return
+    return data
 
 class UserAccount:
     def __init__(self,name,balance):
