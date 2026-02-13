@@ -27,7 +27,7 @@ class UserAccount:
 
 def main():
     price1=100
-    tax1=price1*0.1
+    first_item_tax = price1 * 0.1
     price2=200
     tax2=price2*0.1
     total1=CalculateTotalPrice(price1,0.1)
