@@ -15,6 +15,8 @@ EXPOSE 8000
 
 # Define environment variable
 ENV NAME World
+RUN useradd -m myuser
+USER myuser
 
 # Run app.py when the container launches
 CMD ["python", "app.py"]
