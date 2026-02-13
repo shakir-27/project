@@ -1,7 +1,7 @@
 import math
 import sys
 
-def CalculateTotalPrice(price,tax_rate):
+def calculate_total_price(price, tax_rate):
     total=price+price*tax_rate
     return total
 
