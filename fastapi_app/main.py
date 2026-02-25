@@ -47,7 +47,7 @@ class Item(BaseModel):
 
 # Mock database (in-memory list)
 
-db = []
+item_database = []
 
 
 
