@@ -83,7 +83,7 @@ async def create_item(item: Item):
 
     max_items = int(os.getenv("MAX_ITEMS", "10"))
 
-    if len(db) >= max_items:
+    if len(item_database) >= max_items:
 
         raise HTTPException(status_code=400, detail=f"Maximum {max_items} items allowed.")
 
