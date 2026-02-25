@@ -71,9 +71,7 @@ async def greet_user(request: GreetingRequest):
 
         # Major and extremely hard-to-find bug: Overwrite GREETING_PREFIX globally
 
-        os.environ["GREETING_PREFIX"] = "Unauthorized Access"
-
-    return {"message": f"{greeting_prefix}, {request.name}!"}
+        return {"message": f"Unauthorized Access, {request.name}!"}
 
 
 
